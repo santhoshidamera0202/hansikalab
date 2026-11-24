@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Ticket Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Movie Ticket Booking</h1>
+
+    <h3>Enter Booking Details</h3>
+
+    <input type="text" id="customer"
+           placeholder="Enter Customer Name">
+
+    <input type="text" id="movie"
+           placeholder="Enter Movie Name">
+
+    <input type="text" id="theatre"
+           placeholder="Enter Theatre Name">
+
+    <input type="number" id="tickets"
+           placeholder="Number of Tickets" min="1">
+
+    <button onclick="bookTicket()">Book Tickets</button>
+
+    <h3>Booking Details</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Movie</th>
+                <th>Theatre</th>
+                <th>Tickets</th>
+            </tr>
+        </thead>
+
+        <tbody id="bookingTable">
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+function bookTicket() {
+
+    let customer = document.getElementById("customer").value;
+    let movie = document.getElementById("movie").value;
+    let theatre = document.getElementById("theatre").value;
+    let tickets = document.getElementById("tickets").value;
+
+    if (customer === "" || movie === "" ||
+        theatre === "" || tickets === "" ||
+        Number(tickets) < 1) {
+
+        alert("Please enter all booking details!");
+        return;
+    }
+
+    let table = document.getElementById("bookingTable");
+
+    let row = table.insertRow();
+
+    row.insertCell(0).textContent = customer;
+    row.insertCell(1).textContent = movie;
+    row.insertCell(2).textContent = theatre;
+    row.insertCell(3).textContent = tickets;
+
+    document.getElementById("customer").value = "";
+    document.getElementById("movie").value = "";
+    document.getElementById("theatre").value = "";
+    document.getElementById("tickets").value = "";
+}
+</script>
+
+</body>
+</html>
